@@ -4,6 +4,9 @@ function idx = findClosestCentroids(X, centroids)
 %   in idx for a dataset X where each row is a single example. idx = m x 1 
 %   vector of centroid assignments (i.e. each entry in range [1..K])
 %
+% centroids
+
+% X
 
 % Set K
 K = size(centroids, 1);
@@ -20,12 +23,12 @@ idx = zeros(size(X,1), 1);
 %
 % Note: You can use a for-loop over the examples to compute this.
 %
-
-
-
-
-
-
+for iter = 1:size(X,1)
+    XM = repmat(X(iter, :), K, 1);
+    diff = sqrt(sumsq((XM - centroids)')');
+    [min_value indice] = min(diff);
+    idx(iter) = indice(1);
+end
 
 % =============================================================
 
