@@ -27,8 +27,10 @@ centroids = zeros(K, n);
 %
 
 
-
-
+for i = 1:K
+    vMean = X(find(idx == i), :);
+    centroids(i,:)=mean(vMean);
+end
 
 
 
